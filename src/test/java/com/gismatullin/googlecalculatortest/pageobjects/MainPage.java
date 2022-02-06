@@ -10,10 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 public class MainPage {
 
     private final static String PAGE_URL = "https://google.com";
-    private final static String CALC_QUERY_STRING = "калькулятор";
+    private final static String CALC_QUERY_STRING = "Калькулятор";
 
-    @FindBy(css = "input[title='Search']")
+    @FindBy(css = "input.gLFyf.gsfi")
     private WebElement searchInput;
+
+    @FindBy(css = "input.gNO89b")
+    private WebElement searchButton;
 
     private MainPage() {
         PageFactory.initElements(getDriver(), this);
@@ -31,6 +34,7 @@ public class MainPage {
     }
 
     private void submitSearchQuery(String queryString) {
-        searchInput.sendKeys(queryString + Keys.ENTER);
+        searchInput.sendKeys(queryString);
+        searchButton.click();
     }
 }
