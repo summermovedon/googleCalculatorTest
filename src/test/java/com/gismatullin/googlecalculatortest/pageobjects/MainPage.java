@@ -1,26 +1,19 @@
 package com.gismatullin.googlecalculatortest.pageobjects;
 
 import static com.gismatullin.googlecalculatortest.testhelper.TestHelper.getDriver;
+import static com.gismatullin.googlecalculatortest.testhelper.TestHelper.getElement;
+import static com.gismatullin.googlecalculatortest.testhelper.TestHelper.loadProperties;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import java.util.Properties;
 
 public class MainPage {
 
     private final static String PAGE_URL = "https://google.com";
+    private final static String UI_MAP_PATH = "src/test/resources/ui/mainPageUIMap.properties";
     private final static String CALC_QUERY_STRING = "Калькулятор";
+    private final Properties uiMapProps = loadProperties(UI_MAP_PATH);
 
-    @FindBy(css = "input.gLFyf.gsfi")
-    private WebElement searchInput;
-
-    @FindBy(css = "input.gNO89b")
-    private WebElement searchButton;
-
-    private MainPage() {
-        PageFactory.initElements(getDriver(), this);
-    }
+    private MainPage() {}
 
     public static MainPage open() {
         MainPage mainPage = new MainPage();
@@ -34,7 +27,7 @@ public class MainPage {
     }
 
     private void submitSearchQuery(String queryString) {
-        searchInput.sendKeys(queryString);
-        searchButton.click();
+        getElement(uiMapProps, "searchInput").sendKeys(queryString);
+        getElement(uiMapProps, "searchButton").click();
     }
 }

@@ -53,4 +53,4 @@
 * Использован паттерн проектирования Page Object
 * Отчет о пройденных тестах формируется через Allure
 * Command line to start Selenium Server 4.0 with chromedriver: `java -Dwebdriver.chrome.driver=./chromedriver -jar selenium-server-4.0.0.jar standalone`
-* Тестирование интерфейса работает по состоянию на 06.02.2022
+* Тестирование интерфейса работает по состоянию на 08.02.2022

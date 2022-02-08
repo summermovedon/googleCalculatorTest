@@ -7,7 +7,9 @@ import java.io.InputStream;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -44,5 +46,16 @@ public class TestHelper {
             System.err.println(e.getMessage());
             throw new RuntimeException(e);
         }
-    } 
+    }
+
+    public static WebElement getElement(Properties uiMapProps, String key) {
+        String selector = uiMapProps.getProperty(key);
+        By by;
+        if (selector.startsWith("//")) {
+            by =  By.xpath(selector);
+        } else {
+            by = By.cssSelector(selector);
+        }
+        return getDriver().findElement(by);
+    }
 }
